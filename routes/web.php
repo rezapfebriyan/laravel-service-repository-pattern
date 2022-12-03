@@ -14,4 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [ContactController::class, 'index']);
+Route::controller(ContactController::class)->group(function() {
+    Route::get('/', 'index');
+    Route::get('/contact/{id}', 'show');
+});
