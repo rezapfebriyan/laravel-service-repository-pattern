@@ -15,14 +15,26 @@ class ContactRepository
                         ->where('number', 'LIKE', '+%')
                         ->get()
                         ->map(function ($contact) {
-                            return [
-                                'contact_id' => $contact->id,
-                                'name' => $contact->name,
-                                'number' => $contact->number,
-                                'status' => $contact->active ? 'active' : 'inactive'
-                            ];
+                            return $this->format($contact);
                         });
         
         return $contact;
+    }
+
+    public function getById($id)
+    {
+        $contact = Contact::where('id', $id)->firstOrFail();
+
+        return $this->format($contact);
+    }
+
+    public function format($contact)
+    {
+        return [
+            'contact_id' => $contact->id,
+            'name' => $contact->name,
+            'number' => $contact->number,
+            'status' => $contact->active ? 'active' : 'inactive'
+        ];
     }
 }
