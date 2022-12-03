@@ -20,6 +20,14 @@ class ContactController extends Controller
     {
         //* call method getAll yg didalam repository
         $contact = $this->contactRepository->getAll();
+        
+        return $contact;
+    }
+    
+    public function show($id)
+    {
+        //* call method getById yg didalam repository
+        $contact = $this->contactRepository->getById($id);
 
         return $contact;
     }
