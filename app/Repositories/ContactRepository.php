@@ -4,9 +4,11 @@ namespace App\Repositories;
 
 use App\Models\Contact;
 
+//TODO       :::     HANYA UNTUK PROSES CRUD SAJA     :::
+
 class ContactRepository
 {
-    //TODO      ::    Bussines logic for get list data    ::
+    //*      ::    Bussines logic for get list data    ::
 
     public function getAll()
     {
@@ -20,6 +22,8 @@ class ContactRepository
         
         return $contact;
     }
+
+    //*      ::    Bussines logic for get by id    ::
 
     public function getById($id)
     {
