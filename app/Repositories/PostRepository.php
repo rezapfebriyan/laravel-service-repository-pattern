@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Post;
 
-//TODO       :::     HANYA UNTUK PROSES CRUD SAJA     :::
+//TODO       :::     HANYA UNTUK PROSES QUERY CRUD SAJA     :::
 
 class PostRepository
 {
@@ -23,4 +23,17 @@ class PostRepository
         return $this->post->get();
     }
 
+    //*      ::    Bussines logic for store data    ::
+
+    public function store($data)
+    {
+        $post = new $this->post;
+
+        $post->title = $data['title'];
+        $post->description = $data['description'];
+
+        $post->save();
+
+        return $post->fresh();
+    }
 }

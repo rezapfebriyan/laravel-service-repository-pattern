@@ -30,4 +30,25 @@ class PostController extends Controller
 
         return response()->json($result, $result['status']);
     }
+
+    public function store(Request $request)
+    {
+        $data = $request->only([
+            'title',
+            'description'
+        ]);
+        
+        $result = ['status' => 201];
+        
+        try {
+            $result['data'] = $this->postService->store($data);
+        } catch (Exception $e) {
+            $result = [
+                'status' => 500,
+                'error' => $e->getMessage()
+            ];
+        }
+
+        return response()->json($result, $result['status']);
+    }
 }

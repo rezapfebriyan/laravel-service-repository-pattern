@@ -3,6 +3,10 @@
 namespace App\Services;
 
 use App\Repositories\PostRepository;
+use Illuminate\Support\Facades\Validator;
+use InvalidArgumentException;
+
+//TODO       :::     UNTUK PROSES VALIDASI DATA     :::
 
 class PostService
 {
@@ -10,11 +14,27 @@ class PostService
 
     public function __construct(PostRepository $postRepository)
     {
-        $this->postReposotory = $postRepository;
+        $this->postRepository = $postRepository;
     }
 
     public function getAll()
     {
-        return $this->postReposotory->getAll();
+        return $this->postRepository->getAll();
+    }
+
+    public function store($data)
+    {
+        $validator = Validator::make($data, [
+            'title' => 'required',
+            'description' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            throw new InvalidArgumentException($validator->errors()->first());
+        }
+
+        $result = $this->postRepository->store($data);
+
+        return $result;
     }
 }
