@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,4 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::controller(ContactController::class)->group(function() {
     Route::get('/', 'index');
     Route::get('/contact/{id}', 'show');
+});
+
+Route::controller(PostController::class)->group(function() {
+    Route::get('/post', 'index');
 });
