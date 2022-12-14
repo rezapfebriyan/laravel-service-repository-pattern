@@ -22,4 +22,5 @@ Route::controller(ContactController::class)->group(function() {
 
 Route::controller(PostController::class)->group(function() {
     Route::get('/post', 'index');
+    Route::get('/post/create', 'store');
 });
