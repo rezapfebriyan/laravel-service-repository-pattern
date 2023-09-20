@@ -1,6 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/', [ContactController::class, 'index']);
+Route::get('/contact/{id}', [ContactController::class, 'show']);
+
+Route::get('/post', [PostController::class, 'index']);
+Route::post('/post', [PostController::class, 'store']);

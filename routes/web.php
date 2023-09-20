@@ -14,13 +14,3 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::controller(ContactController::class)->group(function() {
-    Route::get('/', 'index');
-    Route::get('/contact/{id}', 'show');
-});
-
-Route::controller(PostController::class)->group(function() {
-    Route::get('/post', 'index');
-    Route::get('/post/create', 'store');
-});
