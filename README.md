@@ -31,5 +31,3 @@ Alur kerjanya adalah:
 - buat database baru sesuai nama yang anda set di file .env
 - jalankan 'php artisan migrate:refresh' untuk membuat tabel-tabel yang diperlukan kedalam database
 - jalankan 'php artisan serve' untuk menjalankan app
-- buka http://localhost:8000
-
